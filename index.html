@@ -132,7 +132,17 @@ if (!window.matchMedia(
 }
 </script>
 <!-- 🎵 GlitterPink16 Music Player -->
+<audio id="music" loop>
+  <source src="pink-pony-club.mp3" type="audio/mpeg">
+</audio>
 
+<button onclick="document.getElementById('music').play()">
+  Play Music
+</button>
+
+<button onclick="document.getElementById('music').pause()">
+  Pause
+</button>
 <div class="pink-music-player">
   <h2>🎵 GlitterPink16 Music 🎵</h2>
   <div class="music-icon">🎧</div>
