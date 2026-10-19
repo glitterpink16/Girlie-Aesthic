@@ -131,3 +131,127 @@ if (!window.matchMedia(
   setInterval(makeSparkle, 900);
 }
 </script>
+<!-- 🎵 GlitterPink16 Music Player -->
+<div class="pink-music-player">
+  <h2>🎵 GlitterPink16 Music 🎵</h2>
+  <div class="music-icon">🎧</div>
+  <p>💗 Pink Gaming Vibes 💗</p>
+
+  <button onclick="startPinkMusic()">
+    ▶️ Play
+  </button>
+
+  <button onclick="stopPinkMusic()">
+    ⏸️ Pause
+  </button>
+
+  <p>🔊 Volume</p>
+  <input
+    id="pinkVolume"
+    type="range"
+    min="0"
+    max="100"
+    value="40"
+    aria-label="Music volume"
+  >
+</div>
+
+<style>
+.pink-music-player {
+  background: #130913;
+  border: 3px solid #ff1493;
+  border-radius: 22px;
+  padding: 25px;
+  margin: 25px auto;
+  max-width: 400px;
+  text-align: center;
+  color: #ffb6e5;
+  box-shadow: 0 0 22px #ff1493;
+}
+
+.music-icon {
+  font-size: 65px;
+  margin: 15px;
+}
+
+.pink-music-player button {
+  background: #ff1493;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  margin: 6px;
+  border-radius: 25px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.pink-music-player input {
+  width: 80%;
+  accent-color: #ff1493;
+}
+</style>
+
+<script>
+let pinkAudio;
+let pinkTimer;
+let pinkStep = 0;
+
+const pinkNotes = [
+  261.63, 329.63, 392.00, 523.25,
+  392.00, 329.63, 293.66, 349.23
+];
+
+function playPinkNote() {
+  if (!pinkAudio) return;
+
+  const oscillator = pinkAudio.createOscillator();
+  const gain = pinkAudio.createGain();
+
+  const volume = document.getElementById("pinkVolume");
+  const level = Number(volume.value) / 100;
+
+  oscillator.type = "sine";
+  oscillator.frequency.value =
+    pinkNotes[pinkStep % pinkNotes.length];
+
+  gain.gain.value = level * 0.12;
+
+  oscillator.connect(gain);
+  gain.connect(pinkAudio.destination);
+
+  oscillator.start();
+  oscillator.stop(pinkAudio.currentTime + 0.22);
+
+  pinkStep++;
+}
+
+async function startPinkMusic() {
+  if (pinkTimer) return;
+
+  const AudioContextClass =
+    window.AudioContext || window.webkitAudioContext;
+
+  if (!AudioContextClass) {
+    alert("Audio is not supported in this browser.");
+    return;
+  }
+
+  pinkAudio = new AudioContextClass();
+  await pinkAudio.resume();
+
+  playPinkNote();
+  pinkTimer = setInterval(playPinkNote, 300);
+}
+
+function stopPinkMusic() {
+  clearInterval(pinkTimer);
+  pinkTimer = null;
+
+  if (pinkAudio) {
+    pinkAudio.close();
+    pinkAudio = null;
+  }
+}
+</script>
+<!-- End Music Player -->
+
