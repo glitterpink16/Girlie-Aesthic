@@ -146,27 +146,6 @@ if (!window.matchMedia(
   Pause
 </button>
   
-
-
-pinkAudio.loop = true;
-pinkAudio.volume = 0.4;
-
-function startPinkMusic() {
-  pinkAudio.play().catch(() => {
-    alert("Please check your song file.");
-  });
-}
-
-function stopPinkMusic() {
-  pinkAudio.pause();
-}
-
-const pinkVolume = document.getElementById("pinkVolume");
-
-if (pinkVolume) {
-  pinkVolume.addEventListener("input", function () {
-    pinkAudio.volume = Number(this.value) / 100;
-  });
 }
 </script>
 
@@ -184,7 +163,11 @@ if (pinkVolume) {
   color: #ffb6e5;
   box-shadow: 0 0 22px #ff1493;
 }
-
+</script>
+</body>
+</html>
+  
+  
 .music-icon {
   font-size: 65px;
   margin: 15px;
