@@ -83,3 +83,51 @@ function showMagic() {
 </button>
 </body>
 </html>
+
+<!-- GlitterPink16 Sparkling Stars -->
+<style>
+.sparkle-star {
+  position: fixed;
+  bottom: -30px;
+  pointer-events: none;
+  z-index: 999;
+  animation: sparkleFloat linear forwards;
+}
+
+@keyframes sparkleFloat {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% {
+    transform: translateY(-110vh) rotate(180deg);
+    opacity: 0;
+  }
+}
+</style>
+
+<script>
+function makeSparkle() {
+  const star = document.createElement("span");
+  star.className = "sparkle-star";
+  star.textContent =
+    ["✨", "⭐", "✦", "💫"][Math.floor(Math.random() * 4)];
+
+  star.style.left = Math.random() * 95 + "vw";
+  star.style.fontSize =
+    (12 + Math.random() * 18) + "px";
+  star.style.animationDuration =
+    (5 + Math.random() * 4) + "s";
+
+  document.body.appendChild(star);
+  setTimeout(() => star.remove(), 9000);
+}
+
+if (!window.matchMedia(
+  "(prefers-reduced-motion: reduce)"
+).matches) {
+  setInterval(makeSparkle, 900);
+}
+</script>
