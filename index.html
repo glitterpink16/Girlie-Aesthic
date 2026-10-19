@@ -154,6 +154,31 @@ if (!window.matchMedia(
     value="40"
     aria-label="Music volume"
   >
+<script>
+const pinkAudio = new Audio("pink-pony-club.mp3");
+
+pinkAudio.loop = true;
+pinkAudio.volume = 0.4;
+
+function startPinkMusic() {
+  pinkAudio.play().catch(() => {
+    alert("Please check your song file.");
+  });
+}
+
+function stopPinkMusic() {
+  pinkAudio.pause();
+}
+
+const pinkVolume = document.getElementById("pinkVolume");
+
+if (pinkVolume) {
+  pinkVolume.addEventListener("input", function () {
+    pinkAudio.volume = Number(this.value) / 100;
+  });
+}
+</script>
+
 </div>
 
 <style>
