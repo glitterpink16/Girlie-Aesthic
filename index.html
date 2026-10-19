@@ -146,83 +146,12 @@ if (!window.matchMedia(
   Pause
 </button>
   
-}
-</script>
 
-</div>
 
-<style>
-.pink-music-player {
-  background: #130913;
-  border: 3px solid #ff1493;
-  border-radius: 22px;
-  padding: 25px;
-  margin: 25px auto;
-  max-width: 400px;
-  text-align: center;
-  color: #ffb6e5;
-  box-shadow: 0 0 22px #ff1493;
-}
-</script>
 </body>
 </html>
-  
-  
-.music-icon {
-  font-size: 65px;
-  margin: 15px;
-}
 
-.pink-music-player button {
-  background: #ff1493;
-  color: white;
-  border: none;
-  padding: 12px 20px;
-  margin: 6px;
-  border-radius: 25px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.pink-music-player input {
-  width: 80%;
-  accent-color: #ff1493;
-}
-
-}
-
-<!-- 💗 GlitterPink16 - Pink Pony Club Player -->
-<script>
-const pinkAudio = new Audio("pink-pony-club.mp3");
-
-pinkAudio.loop = true;
-pinkAudio.volume = 0.4;
-
-function startPinkMusic() {
-  pinkAudio.play().catch(() => {
-    alert("Song couldn't play. Check your audio file.");
-  });
-}
-
-function stopPinkMusic() {
-  pinkAudio.pause();
-}
-
-const pinkVolume = document.getElementById("pinkVolume");
-
-if (pinkVolume) {
-  pinkVolume.addEventListener("input", function () {
-    pinkAudio.volume = Number(this.value) / 100;
-  });
-}
-</script>
-<!-- End Pink Pony Club Player -->
-
-async function startPinkMusic() {
-  if (pinkTimer) return;
-
-  const AudioContextClass =
-    window.AudioContext || window.webkitAudioContext;
+<!
 
   if (!AudioContextClass) {
     alert("Audio is not supported in this browser.");
