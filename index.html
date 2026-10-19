@@ -189,41 +189,35 @@ if (!window.matchMedia(
   width: 80%;
   accent-color: #ff1493;
 }
-</style>
 
-<script>
-let pinkAudio;
-let pinkTimer;
-let pinkStep = 0;
-
-const pinkNotes = [
-  261.63, 329.63, 392.00, 523.25,
-  392.00, 329.63, 293.66, 349.23
-];
-
-function playPinkNote() {
-  if (!pinkAudio) return;
-
-  const oscillator = pinkAudio.createOscillator();
-  const gain = pinkAudio.createGain();
-
-  const volume = document.getElementById("pinkVolume");
-  const level = Number(volume.value) / 100;
-
-  oscillator.type = "sine";
-  oscillator.frequency.value =
-    pinkNotes[pinkStep % pinkNotes.length];
-
-  gain.gain.value = level * 0.12;
-
-  oscillator.connect(gain);
-  gain.connect(pinkAudio.destination);
-
-  oscillator.start();
-  oscillator.stop(pinkAudio.currentTime + 0.22);
-
-  pinkStep++;
 }
+
+<!-- 💗 GlitterPink16 - Pink Pony Club Player -->
+<script>
+const pinkAudio = new Audio("pink-pony-club.mp3");
+
+pinkAudio.loop = true;
+pinkAudio.volume = 0.4;
+
+function startPinkMusic() {
+  pinkAudio.play().catch(() => {
+    alert("Song couldn't play. Check your audio file.");
+  });
+}
+
+function stopPinkMusic() {
+  pinkAudio.pause();
+}
+
+const pinkVolume = document.getElementById("pinkVolume");
+
+if (pinkVolume) {
+  pinkVolume.addEventListener("input", function () {
+    pinkAudio.volume = Number(this.value) / 100;
+  });
+}
+</script>
+<!-- End Pink Pony Club Player -->
 
 async function startPinkMusic() {
   if (pinkTimer) return;
