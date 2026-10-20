@@ -135,46 +135,23 @@ if (!window.matchMedia(
   <source src="Chappell Roan - Pink Pony Club (Lyrics) im gonna keep on dancing.mp3" type="audio/mpeg">
 </audio>
 
-<button onclick="document.getElementById('music').play()">
-  Play Music
-</button>
+
+
+  </button>
+
+ <button onclick="document.getElementById('music').pause()">
 
 <button onclick="document.getElementById('music').pause()">
   Pause
 </button>
 
-
-  
-
-
 </body>
 </html>
 
-<!
 
-  if (!AudioContextClass) {
-    alert("Audio is not supported in this browser.");
-    return;
-  }
-
-  pinkAudio = new AudioContextClass();
-  await pinkAudio.resume();
-
-  playPinkNote();
-  pinkTimer = setInterval(playPinkNote, 300);
-}
-
-function stopPinkMusic() {
-  clearInterval(pinkTimer);
-  pinkTimer = null;
-
-  if (pinkAudio) {
-    pinkAudio.close();
-    pinkAudio = null;
   
-}
-</script>
-</body>
-</hmtl>
-<!-- End Music Player -->
+    
+  
+    
+
 
